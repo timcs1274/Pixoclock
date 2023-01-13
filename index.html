@@ -5,10 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixo'clock</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <div class="timer">
+            <p>12:01</p>
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: rgb(72, 78, 78);
+        }
+
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            background-color: black;
+        }
+
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;}
+    </style>
 </body>
 </html>
-<script src="/index.js"></script>
