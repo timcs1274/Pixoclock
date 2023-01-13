@@ -49,8 +49,9 @@
             }
             return i;
         }
-  
+
         function startTime() {
+            // var timePics = [test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
             var today = new Date();
             var h = today.getHours();
                 if(h>=12){
@@ -62,14 +63,16 @@
                 if(h>12){
                     h = h - 12;
                 }
-                if(h<10){
-                    h = "0"+h;
-                }
             var m = today.getMinutes();
             var s = today.getSeconds();
             // add a zero in front of numbers<10
             m = checkTime(m);
             s = checkTime(s);
+
+                // if(s === [0,1,2,3,4,5,6,7,8,9]){
+                //     [test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
+                // }
+
             document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
             t = setTimeout(function() {
                 startTime()
