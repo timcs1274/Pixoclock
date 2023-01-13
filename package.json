@@ -1,0 +1,22 @@
+{
+  "name": "pixoclock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timcs1274/Pixoclock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timcs1274/Pixoclock/issues"
+  },
+  "homepage": "https://github.com/timcs1274/Pixoclock#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
