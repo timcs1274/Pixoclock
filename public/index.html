@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <img id="img0" src="/assets/test0.png" alt="0" height=50px width=50px>
+        <!-- <img id="img0" src="/assets/test0.png" alt="0" height=50px width=50px>
         <img id="img1" src="/assets/test1.png" alt="0" height=50px width=50px>
         <img id="img2" src="/assets/test2.png" alt="0" height=50px width=50px>
         <img id="img3" src="/assets/test3.png" alt="0" height=50px width=50px>
@@ -17,7 +17,7 @@
         <img id="img6" src="/assets/test6.png" alt="0" height=50px width=50px>
         <img id="img7" src="/assets/test7.png" alt="0" height=50px width=50px>
         <img id="img8" src="/assets/test8.png" alt="0" height=50px width=50px>
-        <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px>
+        <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px> -->
         <div id="time"></div>
     </div>
     <style>
@@ -43,6 +43,32 @@
     </style>
 
     <script>
+        //creating img names
+    //     ImageNames = new Object();
+    //     ImageNames.length = 9; 
+                                
+    //     for (counter = 0; counter < 10; counter++) {
+    //         file_number = counter + 1;
+    //         file_name = ("test" + file_number + ".png");
+    //         ImageNames[counter] = file_name;
+    //     };
+    // console.log(ImageNames);
+
+        var imgArr = [];
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test0.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test1.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test2.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test3.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test4.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test5.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test6.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test7.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test8.png');
+        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test9.png');
+        // console.log(imgArr);
+
+
+
         function checkTime(i) {
             if (i < 10) {
                 i = "0" + i;
@@ -51,7 +77,6 @@
         }
 
         function startTime() {
-            // var timePics = [img0 = test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
             var today = new Date();
             var h = today.getHours();
                 if(h>=12){
@@ -82,6 +107,14 @@
             var realDigits = digits.map(Number)
             console.log(realDigits);
 
+
+            var newImgArr = realDigits.map(i => imgArr[i])
+            console.log(newImgArr)
+            // document.getElementById('time').appendChild(newImgArr[0]);
+
+            // var z = document.createElement('time'); 
+            // z.innerHTML = imgArr;
+            // document.body.appendChild(z);
 
 
         }
