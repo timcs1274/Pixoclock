@@ -8,16 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <img src="/assets/test0.png" alt="0" height=50px width=50px>
-        <img src="/assets/test1.png" alt="0" height=50px width=50px>
-        <img src="/assets/test2.png" alt="0" height=50px width=50px>
-        <img src="/assets/test3.png" alt="0" height=50px width=50px>
-        <img src="/assets/test4.png" alt="0" height=50px width=50px>
-        <img src="/assets/test5.png" alt="0" height=50px width=50px>
-        <img src="/assets/test6.png" alt="0" height=50px width=50px>
-        <img src="/assets/test7.png" alt="0" height=50px width=50px>
-        <img src="/assets/test8.png" alt="0" height=50px width=50px>
-        <img src="/assets/test9.png" alt="0" height=50px width=50px>
+        <img id="img0" src="/assets/test0.png" alt="0" height=50px width=50px>
+        <img id="img1" src="/assets/test1.png" alt="0" height=50px width=50px>
+        <img id="img2" src="/assets/test2.png" alt="0" height=50px width=50px>
+        <img id="img3" src="/assets/test3.png" alt="0" height=50px width=50px>
+        <img id="img4" src="/assets/test4.png" alt="0" height=50px width=50px>
+        <img id="img5" src="/assets/test5.png" alt="0" height=50px width=50px>
+        <img id="img6" src="/assets/test6.png" alt="0" height=50px width=50px>
+        <img id="img7" src="/assets/test7.png" alt="0" height=50px width=50px>
+        <img id="img8" src="/assets/test8.png" alt="0" height=50px width=50px>
+        <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px>
         <div id="time"></div>
     </div>
     <style>
@@ -51,7 +51,7 @@
         }
 
         function startTime() {
-            // var timePics = [test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
+            // var timePics = [img0 = test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
             var today = new Date();
             var h = today.getHours();
                 if(h>=12){
@@ -65,20 +65,31 @@
                 }
             var m = today.getMinutes();
             var s = today.getSeconds();
-            // add a zero in front of numbers<10
             m = checkTime(m);
             s = checkTime(s);
-
-                // if(s === [0,1,2,3,4,5,6,7,8,9]){
-                //     [test0.png, test1.png, test2.png, test3.png, test4.png, test5.png, test6.png, test7.png, test8.png, test9.png]
-                // }
 
             document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
             t = setTimeout(function() {
                 startTime()
-            }, 500);
+            }, 700);
+            
+            // Only get the digits, instead of whole HTML element
+            var result = document.getElementById("time").innerHTML;
+            console.log(result);
+            
+            // Separates digits into an array
+            var digits = result.toString().split('');
+            var realDigits = digits.map(Number)
+            console.log(realDigits);
+
+
+
         }
+        
         startTime();
+        
+
+       
 
     </script>
 </body>
