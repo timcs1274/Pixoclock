@@ -19,6 +19,8 @@
         <img id="img8" src="/assets/test8.png" alt="0" height=50px width=50px>
         <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px>
         <div id="time"></div>
+        <div id="newTime"></div>
+        <div id="testImg"></div>
     </div>
     <style>
         body{
@@ -43,20 +45,9 @@
     </style>
 
     <script>
-        //creating img names
-    //     ImageNames = new Object();
-    //     ImageNames.length = 9; 
-                                
-    //     for (counter = 0; counter < 10; counter++) {
-    //         file_number = counter + 1;
-    //         file_name = ("test" + file_number + ".png");
-    //         ImageNames[counter] = file_name;
-    //     };
-    // console.log(ImageNames);
-
         var imgArr = [];
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test0.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test1.png');
+        imgArr.push(document.querySelector("#img1"));
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test2.png');
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test3.png');
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test4.png');
@@ -65,8 +56,7 @@
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test7.png');
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test8.png');
         imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test9.png');
-        // console.log(imgArr);
-
+        console.log(imgArr);
 
 
         function checkTime(i) {
@@ -93,23 +83,26 @@
             m = checkTime(m);
             s = checkTime(s);
 
-            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-            t = setTimeout(function() {
-                startTime()
-            }, 700);
-            
             // Only get the digits, instead of whole HTML element
             var result = document.getElementById("time").innerHTML;
-            console.log(result);
+            console.log('this is result', result);
             
             // Separates digits into an array
             var digits = result.toString().split('');
             var realDigits = digits.map(Number)
-            console.log(realDigits);
+            console.log('this is realDigits', realDigits);
 
 
             var newImgArr = realDigits.map(i => imgArr[i])
-            console.log(newImgArr)
+            console.log('this is newImgArr', newImgArr)
+
+            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+            document.getElementById('newTime').innerHTML = newImgArr;
+            t = setTimeout(function() {
+                startTime()
+            }, 500);
+            
+            
             // document.getElementById('time').appendChild(newImgArr[0]);
 
             // var z = document.createElement('time'); 
