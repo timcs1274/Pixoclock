@@ -67,27 +67,38 @@
         }
 
         function startTime() {
-    var today = new Date();
-    var h = checkTime(today.getHours());
-    var m = checkTime(today.getMinutes());
-    var s = checkTime(today.getSeconds());
-    var time = h + ":" + m + ":" + s;
+            var today = new Date();
+            var h = today.getHours();
+            var am_pm = "AM";
+            if(h>=12){
+                am_pm = "PM";
+            }
+            if (h == 0) {
+                h = 12;
+            }
+            if(h>12){
+                h = h - 12;
+            }
+            var m = checkTime(today.getMinutes());
+            var s = checkTime(today.getSeconds());
+            var time = h + ":" + m + ":" + s + " " + am_pm;
 
-    var imageContainer = document.getElementById("image-container");
-    imageContainer.innerHTML = "";
-    for (var i = 0; i < time.length; i++) {
-        var digit = time[i];
-        var imgSrc = imgArr[digit];
-        var img = document.createElement("img");
-        img.src = imgSrc;
-        img.height = "50";
-        img.width = "50";
-        imageContainer.appendChild(img);
-    }
+            var imageContainer = document.getElementById("image-container");
+            imageContainer.innerHTML = "";
+            for (var i = 0; i < time.length; i++) {
+                var digit = time[i];
+                var imgSrc = imgArr[digit];
+                var img = document.createElement("img");
+                img.src = imgSrc;
+                img.height = "50";
+                img.width = "50";
+                imageContainer.appendChild(img);
+            }
+            setTimeout(startTime, 1000);
+        }
 
-    setTimeout(startTime, 1000);
-}
-startTime();
+    
+        startTime();
 
        
 
