@@ -50,74 +50,85 @@
             width: 500px;
             height: 300px;
         }
-    </style>
-
-    <script>
-        var imgArr = [];
-        imgArr.push('http://localhost:8080/assets/test0.png');
-        imgArr.push('http://localhost:8080/assets/test1.png');
-        imgArr.push('http://localhost:8080/assets/test2.png');
-        imgArr.push('http://localhost:8080/assets/test3.png');
-        imgArr.push('http://localhost:8080/assets/test4.png');
-        imgArr.push('http://localhost:8080/assets/test5.png');
-        imgArr.push('http://localhost:8080/assets/test6.png');
-        imgArr.push('http://localhost:8080/assets/test7.png');
-        imgArr.push('http://localhost:8080/assets/test8.png');
-        imgArr.push('http://localhost:8080/assets/test9.png');
-        imgArr.push('http://localhost:8080/assets/test10.png');
-        
-
-
-        function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i;
-            }
-            return i;
-        }
-
-        function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-            var am_pm = "AM";
-            if(h>=12){
-                am_pm = "PM";
-            }
-            if (h == 0) {
-                h = 12;
-            }
-            if(h>12){
-                h = h - 12;
-            }
-            var m = checkTime(today.getMinutes());
-            var s = checkTime(today.getSeconds());
-            time = h + ":" + m + ":" + s + " " + am_pm;
-            time = time.split("");
-            time.splice(8,time.length-8);
-
-
-            var imageContainer = document.getElementById("image-container");
-            imageContainer.innerHTML = "";
-            for (var i = 0; i < time.length; i++) {
-                var digit = time[i];
-                var imgSrc = imgArr[digit];
-                    if (digit === ":") {
-                    imgSrc = 'http://localhost:8080/assets/test10.png';
-                    }
-
-                var img = document.createElement("img");
-                img.src = imgSrc;
-                img.height = "50";
-                img.width = "50";
-                imageContainer.appendChild(img);
-            }
-            setTimeout(startTime, 1000);
-        }
-
-    
-        startTime();
 
        
 
-    </script>
+    </style>
+
+<script>
+    var imgArr = [
+        'http://localhost:8080/assets/test0.png',
+        'http://localhost:8080/assets/test1.png',
+        'http://localhost:8080/assets/test2.png',
+        'http://localhost:8080/assets/test3.png',
+        'http://localhost:8080/assets/test4.png',
+        'http://localhost:8080/assets/test5.png',
+        'http://localhost:8080/assets/test6.png',
+        'http://localhost:8080/assets/test7.png',
+        'http://localhost:8080/assets/test8.png',
+        'http://localhost:8080/assets/test9.png',
+        'http://localhost:8080/assets/test10.png'
+    ];
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    // Function to update clock
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var am_pm = "AM";
+        if(h>=12){
+            am_pm = "PM";
+        }
+        if (h == 0) {
+            h = 12;
+        }
+        if(h>12){
+            h = h - 12;
+        }
+
+        var m = checkTime(today.getMinutes());
+        var s = checkTime(today.getSeconds());
+        var time = h + ":" + m + ":" + s + " " + am_pm;
+        
+        time = time.split("");
+        time.splice(8,time.length-8);
+
+        // Get the image container element
+        var imageContainer = document.getElementById("image-container");
+        imageContainer.innerHTML = "";
+
+        // Iterate through each character of the time string
+        for (var i = 0; i < time.length; i++) {
+            var digit = time[i];
+
+            // Get the image src for the current digit
+            var imgSrc = imgArr[digit];
+
+            // If the current digit is ':', use the colon image
+            if (digit === ":") {
+                imgSrc = imgArr[10];
+            }
+
+            // Create an image element
+            var img = document.createElement("img");
+            img.src = imgSrc;
+            img.height = "50";
+            img.width = "50";
+
+            imageContainer.appendChild(img);
+        }
+
+        // Update the clock every second
+        setTimeout(startTime, 1000);
+    }
+
+    startTime();
+</script>
 </body>
 </html>
