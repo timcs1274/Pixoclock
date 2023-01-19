@@ -17,8 +17,14 @@
             background-image: url("./assets/Sunset.png");
         }
 
+        img {
+            border: 1px solid white;
+        }
+
+
         #image-container{
             position: absolute;
+            display: flex;
             top: 50%;
             left: 50%;
             margin-right: -50%;
@@ -26,9 +32,12 @@
             height: 400px;
             width: 400px;
             display: inline-block;
-            float: left;
-            background-color: rgb(235, 31, 31);
+            background-color: rgb(87, 87, 87);
+            padding: 10px;
+            margin: 10px;
+
         }
+
 
         #time{
             display: flex;
@@ -55,8 +64,8 @@
         imgArr.push('http://localhost:8080/assets/test7.png');
         imgArr.push('http://localhost:8080/assets/test8.png');
         imgArr.push('http://localhost:8080/assets/test9.png');
+        imgArr.push('http://localhost:8080/assets/test10.png');
         
-        console.log(imgArr);
 
 
         function checkTime(i) {
@@ -81,13 +90,20 @@
             }
             var m = checkTime(today.getMinutes());
             var s = checkTime(today.getSeconds());
-            var time = h + ":" + m + ":" + s + " " + am_pm;
+            time = h + ":" + m + ":" + s + " " + am_pm;
+            time = time.split("");
+            time.splice(8,time.length-8);
+
 
             var imageContainer = document.getElementById("image-container");
             imageContainer.innerHTML = "";
             for (var i = 0; i < time.length; i++) {
                 var digit = time[i];
                 var imgSrc = imgArr[digit];
+                    if (digit === ":") {
+                    imgSrc = 'http://localhost:8080/assets/test10.png';
+                    }
+
                 var img = document.createElement("img");
                 img.src = imgSrc;
                 img.height = "50";
