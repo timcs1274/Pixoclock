@@ -21,7 +21,6 @@
             border: 1px solid white;
         }
 
-
         #image-container{
             position: absolute;
             display: flex;
@@ -38,7 +37,6 @@
 
         }
 
-
         #time{
             display: flex;
             justify-content: center;
@@ -49,6 +47,11 @@
         #clock{
             width: 500px;
             height: 300px;
+        }
+
+        .colon{
+            width: 30px;
+            height: 50px;
         }
 
        
@@ -105,22 +108,24 @@
 
         // Iterate through each character of the time string
         for (var i = 0; i < time.length; i++) {
-            var digit = time[i];
+        var digit = time[i];
 
-            // Get the image src for the current digit
-            var imgSrc = imgArr[digit];
+        // Get the image src for the current digit
+        var imgSrc = imgArr[digit];
 
-            // If the current digit is ':', use the colon image
-            if (digit === ":") {
-                imgSrc = imgArr[10];
-            }
 
-            // Create an image element
-            var img = document.createElement("img");
+        if (digit === ":") {
+            imgSrc = 'http://localhost:8080/assets/test10.png';
+        }
+
+        var img = document.createElement("img");
+        if (digit === ":") {
+            img.classList.add("colon");
+        }
+                       
             img.src = imgSrc;
             img.height = "50";
             img.width = "50";
-
             imageContainer.appendChild(img);
         }
 
