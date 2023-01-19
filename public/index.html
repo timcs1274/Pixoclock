@@ -7,19 +7,9 @@
     <title>Pixo'clock</title>
 </head>
 <body>
-    <div class="container">
-        <img id="img0" src="/assets/test0.png" alt="0" height=50px width=50px>
-        <img id="img1" src="/assets/test1.png" alt="0" height=50px width=50px>
-        <img id="img2" src="/assets/test2.png" alt="0" height=50px width=50px>
-        <img id="img3" src="/assets/test3.png" alt="0" height=50px width=50px>
-        <img id="img4" src="/assets/test4.png" alt="0" height=50px width=50px>
-        <img id="img5" src="/assets/test5.png" alt="0" height=50px width=50px>
-        <img id="img6" src="/assets/test6.png" alt="0" height=50px width=50px>
-        <img id="img7" src="/assets/test7.png" alt="0" height=50px width=50px>
-        <img id="img8" src="/assets/test8.png" alt="0" height=50px width=50px>
-        <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px>
+    
+    <div id="clock">
         <div id="time"></div>
-        <div id="newTime"></div>
         <div id="image-container"></div>
     </div>
     <style>
@@ -27,13 +17,16 @@
             background-image: url("./assets/Sunset.png");
         }
 
-        .container{
+        #image-container{
             position: absolute;
             top: 50%;
             left: 50%;
             margin-right: -50%;
             transform: translate(-50%, -50%);
-            width: 40%;
+            height: 400px;
+            width: 400px;
+            display: inline-block;
+            float: left;
             background-color: rgb(235, 31, 31);
         }
 
@@ -41,7 +34,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: aliceblue;}
+            color: aliceblue;
+        }
+
+        #clock{
+            width: 500px;
+            height: 300px;
+        }
     </style>
 
     <script>
@@ -68,54 +67,27 @@
         }
 
         function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-                if(h>=12){
-                    am_pm = "PM";
-                }
-                if (h == 0) {
-                    h = 12;
-                }
-                if(h>12){
-                    h = h - 12;
-                }
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
+    var today = new Date();
+    var h = checkTime(today.getHours());
+    var m = checkTime(today.getMinutes());
+    var s = checkTime(today.getSeconds());
+    var time = h + ":" + m + ":" + s;
 
-            // Only get the digits, instead of whole HTML element
-            var result = document.getElementById("time").innerHTML;
-            console.log('this is result', result);
-            
-            // Separates digits into an array
-            var digits = result.toString().split('');
-            var realDigits = digits.map(Number)
-            console.log('this is realDigits', realDigits);
+    var imageContainer = document.getElementById("image-container");
+    imageContainer.innerHTML = "";
+    for (var i = 0; i < time.length; i++) {
+        var digit = time[i];
+        var imgSrc = imgArr[digit];
+        var img = document.createElement("img");
+        img.src = imgSrc;
+        img.height = "50";
+        img.width = "50";
+        imageContainer.appendChild(img);
+    }
 
-
-            var newImgArr = realDigits.map(i => imgArr[i])
-            console.log('this is newImgArr', newImgArr)
-
-            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-            document.getElementById('newTime').innerHTML = newImgArr;
-            t = setTimeout(function() {
-                startTime()
-            }, 500);
-            
-            
-            imgArr.forEach(function(image) {
-            let img = new Image();
-            img.src = image;
-            document.getElementById("image-container").appendChild(img);
-            });
-
-
-
-        }
-        
-        startTime();
-        
+    setTimeout(startTime, 1000);
+}
+startTime();
 
        
 
