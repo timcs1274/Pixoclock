@@ -20,7 +20,7 @@
         <img id="img9" src="/assets/test9.png" alt="0" height=50px width=50px>
         <div id="time"></div>
         <div id="newTime"></div>
-        <div id="testImg"></div>
+        <div id="image-container"></div>
     </div>
     <style>
         body{
@@ -46,16 +46,17 @@
 
     <script>
         var imgArr = [];
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test0.png');
-        imgArr.push(document.querySelector("#img1"));
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test2.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test3.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test4.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test5.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test6.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test7.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test8.png');
-        imgArr.push('C:\Users\timcs\Documents\Projects\Pixoclock\public\assets\test9.png');
+        imgArr.push('http://localhost:8080/assets/test0.png');
+        imgArr.push('http://localhost:8080/assets/test1.png');
+        imgArr.push('http://localhost:8080/assets/test2.png');
+        imgArr.push('http://localhost:8080/assets/test3.png');
+        imgArr.push('http://localhost:8080/assets/test4.png');
+        imgArr.push('http://localhost:8080/assets/test5.png');
+        imgArr.push('http://localhost:8080/assets/test6.png');
+        imgArr.push('http://localhost:8080/assets/test7.png');
+        imgArr.push('http://localhost:8080/assets/test8.png');
+        imgArr.push('http://localhost:8080/assets/test9.png');
+        
         console.log(imgArr);
 
 
@@ -103,11 +104,12 @@
             }, 500);
             
             
-            // document.getElementById('time').appendChild(newImgArr[0]);
+            imgArr.forEach(function(image) {
+            let img = new Image();
+            img.src = image;
+            document.getElementById("image-container").appendChild(img);
+            });
 
-            // var z = document.createElement('time'); 
-            // z.innerHTML = imgArr;
-            // document.body.appendChild(z);
 
 
         }
