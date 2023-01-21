@@ -1,7 +1,7 @@
 # Pixoclock
 
 ## Description
-
+Work in progress!
 [Pix-o'clock](https://pixoclock.herokuapp.com/) 
 
  
