@@ -6,7 +6,7 @@ This is [Pix-o'clock](https://pixoclock.herokuapp.com/)! A digital clock that dy
 ## Function
 By taking the time of the user, this app is able to display the current time, down to the second. By replacing the nubmers with cooresponding pictures of the number, my premade pixel art is displayed. All of the pixel art was created using [Aseprite](https://www.aseprite.org/) Here's an example of what it looks like!
 
-!(demoImg.png)
+![demo image](demoImg.png)
  
 
 ## License
