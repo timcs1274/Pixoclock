@@ -19,6 +19,7 @@
     <style>
         body{
             background-image: url("./assets/Sunset.png");
+            background-size: cover;
         }
 
         img {
@@ -55,6 +56,36 @@
         .colon{
             width: 30px;
             height: 50px;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            #image-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100px;
+            width: 150px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #clock {
+            height: 100px;
+            width: 150px;
+            margin: auto;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+
+        .colon{
+            display: none;
+        }
         }
 
 
